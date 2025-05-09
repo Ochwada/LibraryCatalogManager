@@ -116,5 +116,5 @@ public class LibraryCatalogManagerTest {
         assertTrue(orwellBooks.contains("1984"));
         assertTrue(orwellBooks.contains("Animal Farm"));
     }
-    
+
 }
