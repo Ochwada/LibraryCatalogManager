@@ -173,7 +173,16 @@ public class LibraryCatalogManager {
         }
     }
 
-
+    /**
+     * Adds a book to the author's list under the specified genre.
+     *
+     * @param genreName the name of the genre to search for
+     * @param author the author's name to which the book should be added
+     * @param book the title of the book to be added
+     *
+     * If the genre is found in the tree, the book is added to the corresponding author's list.
+     * If the genre does not exist, an error message is printed to the console.
+     */
     public  void addBookToAuthorList(String genreName, String author, String book ){
         GenreNode genre = searchGenre(genreName);
 
@@ -184,10 +193,25 @@ public class LibraryCatalogManager {
         }
     }
 
+
+    /**
+     * Lists all books in the system, grouped by genre and then by author.
+     *
+     * This method traverses the genre tree in-order and prints books grouped by author
+     * for each genre using {@code printBooksGroupedByAuthor()} in each GenreNode.
+     */
     public void listAllBooks(){
         listAllBooksInOrder(root);
     }
 
+    /**
+     * Recursively traverses the genre binary tree in in-order fashion
+     * to print books grouped by author for each genre node.
+     *
+     * @param node the current GenreNode in the traversal
+     *
+     * This is a private utility used by {@code listAllBooks()} to ensure sorted genre output.
+     */
     private void listAllBooksInOrder(GenreNode node){
         if (node == null) return;
 
