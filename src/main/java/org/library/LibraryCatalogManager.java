@@ -44,7 +44,8 @@ public class LibraryCatalogManager {
          * Each key is an author's name, and the value is a list of book titles by that author.
          * TreeMap ensures author names are kept in alphabetical order.
          */
-        TreeMap<String, List<String>> booksByAuthor;
+        //TreeMap<String, List<String>> booksByAuthor;
+        Map<String, Set<String>> booksByAuthor = new HashMap<>();
 
         /**
          * Constructs a new Genre folder with the given name and initializes the book storage map.
@@ -69,7 +70,9 @@ public class LibraryCatalogManager {
          */
         public void addBook(String author, String book) {
             // Ensure the author has a book list
-            booksByAuthor.putIfAbsent(author, new ArrayList<>());
+            //booksByAuthor.putIfAbsent(author, new ArrayList<>());
+            booksByAuthor.computeIfAbsent(author, key -> new TreeSet<>()).add(book);
+
 
             // Add the new book to the List
             booksByAuthor.get(author).add(book);

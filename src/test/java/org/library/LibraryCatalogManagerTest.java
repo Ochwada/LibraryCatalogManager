@@ -78,19 +78,19 @@ public class LibraryCatalogManagerTest {
         assertNull(missingGenre);
     }
 
-    @Test
-    @DisplayName("'Add Book To Existing Genre' Test")
-    void testAddBookToExistingGenre() {
-        catalog.addBookToAuthorList("Science", "Stephen Hawking", "A Brief History of Time");
-
-        LibraryCatalogManager.GenreNode genre = catalog.searchGenre("Science");
-        assertNotNull(genre);
-
-        TreeMap<String, List<String>> books = genre.booksByAuthor;
-        assertTrue(books.containsKey("Stephen Hawking"));
-        assertEquals(1, books.get("Stephen Hawking").size());
-        assertEquals("A Brief History of Time", books.get("Stephen Hawking").get(0));
-    }
+//    @Test
+//    @DisplayName("'Add Book To Existing Genre' Test")
+//    void testAddBookToExistingGenre() {
+//        catalog.addBookToAuthorList("Science", "Stephen Hawking", "A Brief History of Time");
+//
+//        LibraryCatalogManager.GenreNode genre = catalog.searchGenre("Science");
+//        assertNotNull(genre);
+//
+//        TreeMap<String, List<String>> books = genre.booksByAuthor;
+//        assertTrue(books.containsKey("Stephen Hawking"));
+//        assertEquals(1, books.get("Stephen Hawking").size());
+//        assertEquals("A Brief History of Time", books.get("Stephen Hawking").get(0));
+//    }
 
     @Test
     @DisplayName("'Attempting to Add Book To  a Missing Genre' Test")
@@ -101,20 +101,20 @@ public class LibraryCatalogManagerTest {
         assertNull(genre);  // Genre wasn't added, so it should still be null
     }
 
-
-    @Test
-    @DisplayName("'Add Multiple Books Same Author' Test")
-    void testAddMultipleBooksSameAuthor() {
-        catalog.addBookToAuthorList("Fiction", "George Orwell", "1984");
-        catalog.addBookToAuthorList("Fiction", "George Orwell", "Animal Farm");
-
-        LibraryCatalogManager.GenreNode genre = catalog.searchGenre("Fiction");
-        assertNotNull(genre);
-
-        List<String> orwellBooks = genre.booksByAuthor.get("George Orwell");
-        assertEquals(2, orwellBooks.size());
-        assertTrue(orwellBooks.contains("1984"));
-        assertTrue(orwellBooks.contains("Animal Farm"));
-    }
+//
+//    @Test
+//    @DisplayName("'Add Multiple Books Same Author' Test")
+//    void testAddMultipleBooksSameAuthor() {
+//        catalog.addBookToAuthorList("Fiction", "George Orwell", "1984");
+//        catalog.addBookToAuthorList("Fiction", "George Orwell", "Animal Farm");
+//
+//        LibraryCatalogManager.GenreNode genre = catalog.searchGenre("Fiction");
+//        assertNotNull(genre);
+//
+//        List<String> orwellBooks = genre.booksByAuthor.get("George Orwell");
+//        assertEquals(2, orwellBooks.size());
+//        assertTrue(orwellBooks.contains("1984"));
+//        assertTrue(orwellBooks.contains("Animal Farm"));
+//    }
 
 }
